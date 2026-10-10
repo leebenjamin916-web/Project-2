@@ -85,4 +85,4 @@ Q83::N
 Q84::N
 Q85::N
 Q86::The eight panel truss distributes the loads over the top chords more than the other trusses. The panel gabled howe trusses are very similar between the six and eight versions of them. The eight panel gabled howe truss offers the most balanced of low stress and low nodal loading.
-Q87::
+Q87::Based on the project, the eight panel gabled howe truss is the best option for the most stable structure. The roof tributary area is spread across nine top chord nodes instead of seven, which makes the load more managable.
