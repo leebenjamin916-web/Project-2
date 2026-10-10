@@ -17,7 +17,7 @@ def StaticallyDeterminate(nodes,bars):
     # Determine number of (valid) reactions supported by nodes of the truss
     n_reactions = 0
     for node in nodes:
-        if(any(node.ConstraintType())):
+        if(len(node.ConstraintType()) > 0):
             if(2 in node.ConstraintType()):
                 sys.exit("Truss cannot support a moment reaction force")
             elif(-1 in node.ConstraintType()):
@@ -26,8 +26,10 @@ def StaticallyDeterminate(nodes,bars):
                 n_reactions += len(node.ConstraintType())
     
     # Compute if b + r = 2j (Equation 3-1 of the textbook)
-    if(n_bars + n_reactions < 2*n_nodes):
-        sys.exit("The truss is unstable")
+    if n_reactions == 0:
+        sys.exit("No supports found. Add pin/roller constraints to the CSV before running.")
+    elif(n_bars + n_reactions < 2*n_nodes):
+        sys.exit("The truss is unstable; did you input all of the reaction constraints correctly?")
     elif(n_bars + n_reactions > 2*n_nodes):
         sys.exit("The truss is statically indeterminate, and cannot be resolved using method of joints")
     else:
